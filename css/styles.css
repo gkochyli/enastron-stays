@@ -292,22 +292,34 @@ p {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(94, 137, 153, 0.7) 0%,
-      rgba(117, 113, 89, 0.6) 40%,
-      rgba(166, 123, 91, 0.4) 100%
-    ),
-    linear-gradient(
-      to bottom,
-      #7DA8B5 0%,
-      #7DA8B5 40%,
-      #757159 40%,
-      #757159 70%,
-      #5E8999 70%
-    );
-  background-size: cover;
+  background-color: var(--color-text);
+}
+
+.hero__slide {
+  position: absolute;
+  inset: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  object-fit: cover;
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.hero__slide.is-active {
+  opacity: 1;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(46, 54, 64, 0.55) 0%,
+    rgba(94, 137, 153, 0.4) 50%,
+    rgba(117, 113, 89, 0.45) 100%
+  );
+  z-index: 1;
 }
 
 .hero__content {
