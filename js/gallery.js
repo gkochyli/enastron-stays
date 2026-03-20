@@ -1,12 +1,34 @@
 /* =============================================
-   ENASTRON — Photo Gallery & Lightbox
-   Click-to-enlarge, navigation, keyboard support
+   ENASTRON — Photo Gallery, Carousel & Lightbox
+   Mobile carousel with counter, click-to-enlarge,
+   navigation, keyboard support
    ============================================= */
 
 (function () {
   'use strict';
 
   var gallery = document.getElementById('gallery');
+  if (!gallery) return;
+
+  var galleryItems = gallery.querySelectorAll('.gallery__item');
+  var totalImages = galleryItems.length;
+
+  // --- Mobile Carousel Counter ---
+  var counterEl = document.getElementById('galleryCounter');
+  if (counterEl && totalImages > 0) {
+    var scrollTimer;
+    gallery.addEventListener('scroll', function () {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function () {
+        var scrollLeft = gallery.scrollLeft;
+        var itemWidth = gallery.offsetWidth;
+        var idx = Math.round(scrollLeft / itemWidth) + 1;
+        counterEl.textContent = idx + ' / ' + totalImages;
+      }, 50);
+    });
+  }
+
+  // --- Lightbox ---
   var lightbox = document.getElementById('lightbox');
   var lightboxImage = document.getElementById('lightboxImage');
   var lightboxCounter = document.getElementById('lightboxCounter');
@@ -15,11 +37,9 @@
   var lightboxNext = document.getElementById('lightboxNext');
   var showAllBtn = document.getElementById('showAllPhotos');
 
-  if (!gallery || !lightbox) return;
+  if (!lightbox) return;
 
-  var galleryItems = gallery.querySelectorAll('.gallery__item');
   var currentIndex = 0;
-  var totalImages = galleryItems.length;
 
   // Collect gradient backgrounds from gallery items for the lightbox
   var gradients = [];

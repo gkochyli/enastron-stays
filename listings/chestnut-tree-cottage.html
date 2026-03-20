@@ -30,23 +30,26 @@
   <!-- Photo Gallery -->
   <section class="section" style="padding-bottom: 0;">
     <div class="container">
-      <div class="gallery" id="gallery">
-        <div class="gallery__item" data-index="0">
-          <img src="../images/chestnut/hero.jpg" alt="Chestnut Tree Cottage exterior with pool" loading="eager">
+      <div class="gallery-wrap">
+        <div class="gallery" id="gallery">
+          <div class="gallery__item" data-index="0">
+            <img src="../images/chestnut/hero.jpg" alt="Chestnut Tree Cottage exterior with pool" loading="eager">
+          </div>
+          <div class="gallery__item" data-index="1">
+            <img src="../images/chestnut/photo-1.jpg" alt="Chestnut Tree Cottage interior" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="2">
+            <img src="../images/chestnut/photo-2.jpg" alt="Chestnut Tree Cottage kitchen" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="3">
+            <img src="../images/chestnut/photo-3.jpg" alt="Chestnut Tree Cottage bedroom" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="4">
+            <img src="../images/chestnut/photo-4.jpg" alt="Chestnut Tree Cottage terrace and views" loading="lazy">
+            <button class="gallery__show-all" id="showAllPhotos">Show all photos</button>
+          </div>
         </div>
-        <div class="gallery__item" data-index="1">
-          <img src="../images/chestnut/photo-1.jpg" alt="Chestnut Tree Cottage interior" loading="lazy">
-        </div>
-        <div class="gallery__item" data-index="2">
-          <img src="../images/chestnut/photo-2.jpg" alt="Chestnut Tree Cottage kitchen" loading="lazy">
-        </div>
-        <div class="gallery__item" data-index="3">
-          <img src="../images/chestnut/photo-3.jpg" alt="Chestnut Tree Cottage bedroom" loading="lazy">
-        </div>
-        <div class="gallery__item" data-index="4">
-          <img src="../images/chestnut/photo-4.jpg" alt="Chestnut Tree Cottage terrace and views" loading="lazy">
-          <button class="gallery__show-all" id="showAllPhotos">Show all photos</button>
-        </div>
+        <div class="gallery-counter" id="galleryCounter">1 / 5</div>
       </div>
     </div>
   </section>

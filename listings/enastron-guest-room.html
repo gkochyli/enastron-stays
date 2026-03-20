@@ -30,23 +30,26 @@
   <!-- Photo Gallery -->
   <section class="section" style="padding-bottom: 0;">
     <div class="container">
-      <div class="gallery" id="gallery">
-        <div class="gallery__item" data-index="0">
-          <img src="../images/enastron-guest-room/hero.jpg" alt="Enastron Guest Room exterior view" loading="eager">
+      <div class="gallery-wrap">
+        <div class="gallery" id="gallery">
+          <div class="gallery__item" data-index="0">
+            <img src="../images/enastron-guest-room/hero.jpg" alt="Enastron Guest Room exterior view" loading="eager">
+          </div>
+          <div class="gallery__item" data-index="1">
+            <img src="../images/enastron-guest-room/photo-1.jpg" alt="Enastron Guest Room interior" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="2">
+            <img src="../images/enastron-guest-room/photo-2.jpg" alt="Enastron Guest Room bedroom" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="3">
+            <img src="../images/enastron-guest-room/photo-3.jpg" alt="Enastron Guest Room bathroom" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="4">
+            <img src="../images/enastron-guest-room/photo-4.jpg" alt="Enastron Guest Room views and surroundings" loading="lazy">
+            <button class="gallery__show-all" id="showAllPhotos">Show all photos</button>
+          </div>
         </div>
-        <div class="gallery__item" data-index="1">
-          <img src="../images/enastron-guest-room/photo-1.jpg" alt="Enastron Guest Room interior" loading="lazy">
-        </div>
-        <div class="gallery__item" data-index="2">
-          <img src="../images/enastron-guest-room/photo-2.jpg" alt="Enastron Guest Room bedroom" loading="lazy">
-        </div>
-        <div class="gallery__item" data-index="3">
-          <img src="../images/enastron-guest-room/photo-3.jpg" alt="Enastron Guest Room bathroom" loading="lazy">
-        </div>
-        <div class="gallery__item" data-index="4">
-          <img src="../images/enastron-guest-room/photo-4.jpg" alt="Enastron Guest Room views and surroundings" loading="lazy">
-          <button class="gallery__show-all" id="showAllPhotos">Show all photos</button>
-        </div>
+        <div class="gallery-counter" id="galleryCounter">1 / 5</div>
       </div>
     </div>
   </section>

@@ -613,6 +613,73 @@ p {
   margin-bottom: var(--space-lg);
 }
 
+/* Mobile: horizontal carousel via scroll-snap */
+@media (max-width: 767px) {
+  .gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    gap: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+
+  .gallery__item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    aspect-ratio: 4 / 3;
+  }
+
+  .gallery__show-all {
+    display: none;
+  }
+
+  /* Hide scrollbar */
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Carousel counter (mobile only) */
+.gallery-counter {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .gallery-counter {
+    display: block;
+    position: absolute;
+    bottom: var(--space-sm);
+    right: var(--space-sm);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: var(--fs-xs);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+
+/* Gallery wrapper for positioning counter */
+.gallery-wrap {
+  position: relative;
+}
+
+/* Mobile property name under carousel */
+@media (max-width: 767px) {
+  .gallery-wrap {
+    margin-left: calc(-1 * var(--space-md));
+    margin-right: calc(-1 * var(--space-md));
+  }
+}
+
 @media (min-width: 768px) {
   .gallery {
     grid-template-columns: 2fr 1fr 1fr;
