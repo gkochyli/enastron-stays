@@ -10,17 +10,17 @@
 :root {
   --color-bg: #FAFAF5;
   --color-bg-alt: #F0EDE6;
-  --color-text: #2C2C2C;
-  --color-text-light: #6B6B6B;
-  --color-olive: #5C6B4F;
-  --color-olive-light: #7A8B6A;
-  --color-olive-dark: #3D4A35;
-  --color-terracotta: #C07850;
-  --color-terracotta-light: #D4956F;
-  --color-sea: #4A8FA8;
-  --color-sea-light: #6BB3CC;
+  --color-text: #2E3640;
+  --color-text-light: #5A6370;
+  --color-olive: #757159;
+  --color-olive-light: #918D74;
+  --color-olive-dark: #4A4838;
+  --color-terracotta: #A67B5B;
+  --color-terracotta-light: #C09A7A;
+  --color-sea: #5E8999;
+  --color-sea-light: #7DA8B5;
   --color-white: #FFFFFF;
-  --color-border: #E0DDD6;
+  --color-border: #D5D2C3;
 
   --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'Lato', 'Helvetica Neue', Arial, sans-serif;
@@ -295,17 +295,17 @@ p {
   background:
     linear-gradient(
       135deg,
-      rgba(74, 143, 168, 0.7) 0%,
-      rgba(92, 107, 79, 0.6) 40%,
-      rgba(192, 120, 80, 0.4) 100%
+      rgba(94, 137, 153, 0.7) 0%,
+      rgba(117, 113, 89, 0.6) 40%,
+      rgba(166, 123, 91, 0.4) 100%
     ),
     linear-gradient(
       to bottom,
-      #87CEEB 0%,
-      #87CEEB 40%,
-      #5C6B4F 40%,
-      #5C6B4F 70%,
-      #4A8FA8 70%
+      #7DA8B5 0%,
+      #7DA8B5 40%,
+      #757159 40%,
+      #757159 70%,
+      #5E8999 70%
     );
   background-size: cover;
 }
