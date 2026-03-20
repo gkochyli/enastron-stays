@@ -1,5 +1,5 @@
 /* =============================================
-   ENASTRON — Main JavaScript
+   ENASTRON STAYS — Main JavaScript
    Mobile nav toggle, smooth scroll, fade-in
    ============================================= */
 
