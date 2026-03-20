@@ -1,0 +1,111 @@
+/* =============================================
+   ENASTRON — Photo Gallery & Lightbox
+   Click-to-enlarge, navigation, keyboard support
+   ============================================= */
+
+(function () {
+  'use strict';
+
+  var gallery = document.getElementById('gallery');
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImage = document.getElementById('lightboxImage');
+  var lightboxCounter = document.getElementById('lightboxCounter');
+  var lightboxClose = document.getElementById('lightboxClose');
+  var lightboxPrev = document.getElementById('lightboxPrev');
+  var lightboxNext = document.getElementById('lightboxNext');
+  var showAllBtn = document.getElementById('showAllPhotos');
+
+  if (!gallery || !lightbox) return;
+
+  var galleryItems = gallery.querySelectorAll('.gallery__item');
+  var currentIndex = 0;
+  var totalImages = galleryItems.length;
+
+  // Collect gradient backgrounds from gallery items for the lightbox
+  var gradients = [];
+  galleryItems.forEach(function (item) {
+    var placeholder = item.querySelector('.gallery__item-placeholder');
+    if (placeholder) {
+      gradients.push(placeholder.style.background || placeholder.style.backgroundImage);
+    }
+  });
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightboxImage();
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    lightboxClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  function updateLightboxImage() {
+    if (gradients[currentIndex]) {
+      lightboxImage.style.background = gradients[currentIndex];
+    }
+    lightboxCounter.textContent = (currentIndex + 1) + ' / ' + totalImages;
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    updateLightboxImage();
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    updateLightboxImage();
+  }
+
+  // Gallery item click
+  galleryItems.forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      // Don't open lightbox if "show all" button was clicked
+      if (e.target.closest('.gallery__show-all')) return;
+      var index = parseInt(item.getAttribute('data-index'), 10);
+      if (!isNaN(index)) {
+        openLightbox(index);
+      }
+    });
+  });
+
+  // "Show all photos" button — open lightbox at first image
+  if (showAllBtn) {
+    showAllBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      openLightbox(0);
+    });
+  }
+
+  // Lightbox controls
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxNext.addEventListener('click', nextImage);
+  lightboxPrev.addEventListener('click', prevImage);
+
+  // Close on backdrop click
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('is-open')) return;
+
+    switch (e.key) {
+      case 'Escape':
+        closeLightbox();
+        break;
+      case 'ArrowRight':
+        nextImage();
+        break;
+      case 'ArrowLeft':
+        prevImage();
+        break;
+    }
+  });
+})();
