@@ -301,7 +301,7 @@ p {
   width: calc(100% + 40px);
   height: calc(100% + 40px);
   object-fit: cover;
-  filter: blur(10px);
+  filter: blur(2px);
   opacity: 0;
   transition: opacity 1.2s ease;
 }
