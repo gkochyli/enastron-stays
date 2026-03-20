@@ -30,23 +30,26 @@
   <!-- Photo Gallery -->
   <section class="section" style="padding-bottom: 0;">
     <div class="container">
-      <div class="gallery" id="gallery">
-        <div class="gallery__item" data-index="0">
-          <img src="../images/daphne/hero.jpg" alt="Daphne Cottage exterior with pool and terrace" loading="eager">
+      <div class="gallery-wrap">
+        <div class="gallery" id="gallery">
+          <div class="gallery__item" data-index="0">
+            <img src="../images/daphne/hero.jpg" alt="Daphne Cottage exterior with pool and terrace" loading="eager">
+          </div>
+          <div class="gallery__item" data-index="1">
+            <img src="../images/daphne/photo-1.jpg" alt="Daphne Cottage interior living area" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="2">
+            <img src="../images/daphne/photo-2.jpg" alt="Daphne Cottage kitchen and dining" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="3">
+            <img src="../images/daphne/photo-3.jpg" alt="Daphne Cottage bedroom with veranda" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="4">
+            <img src="../images/daphne/photo-4.jpg" alt="Daphne Cottage terrace and valley views" loading="lazy">
+            <button class="gallery__show-all" id="showAllPhotos">Show all photos</button>
+          </div>
         </div>
-        <div class="gallery__item" data-index="1">
-          <img src="../images/daphne/photo-1.jpg" alt="Daphne Cottage interior living area" loading="lazy">
-        </div>
-        <div class="gallery__item" data-index="2">
-          <img src="../images/daphne/photo-2.jpg" alt="Daphne Cottage kitchen and dining" loading="lazy">
-        </div>
-        <div class="gallery__item" data-index="3">
-          <img src="../images/daphne/photo-3.jpg" alt="Daphne Cottage bedroom with veranda" loading="lazy">
-        </div>
-        <div class="gallery__item" data-index="4">
-          <img src="../images/daphne/photo-4.jpg" alt="Daphne Cottage terrace and valley views" loading="lazy">
-          <button class="gallery__show-all" id="showAllPhotos">Show all photos</button>
-        </div>
+        <div class="gallery-counter" id="galleryCounter">1 / 5</div>
       </div>
     </div>
   </section>
