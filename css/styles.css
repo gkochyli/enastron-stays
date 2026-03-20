@@ -219,8 +219,9 @@ p {
 .nav__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-wrap: nowrap;
   height: 72px;
+  gap: var(--space-lg);
 }
 
 .nav__logo {
@@ -230,6 +231,9 @@ p {
   color: var(--color-olive);
   text-decoration: none;
   letter-spacing: 0.02em;
+  margin-right: auto;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav__logo:hover {
@@ -240,6 +244,7 @@ p {
   display: flex;
   gap: var(--space-lg);
   align-items: center;
+  order: 2;
 }
 
 .nav__link {
@@ -257,6 +262,9 @@ p {
 .nav__btn {
   padding: 0.5rem 1.25rem;
   font-size: var(--fs-small);
+  order: 3;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav__hamburger {
@@ -265,6 +273,7 @@ p {
   border: none;
   cursor: pointer;
   padding: var(--space-xs);
+  order: 4;
 }
 
 .nav__hamburger span {
@@ -297,6 +306,19 @@ p {
 
   .nav__hamburger {
     display: block;
+  }
+
+  .nav__inner {
+    gap: var(--space-sm);
+  }
+
+  .nav__logo {
+    font-size: 1.2rem;
+  }
+
+  .nav__btn {
+    padding: 0.4rem 1rem;
+    font-size: var(--fs-xs);
   }
 }
 
