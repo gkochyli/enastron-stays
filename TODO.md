@@ -39,7 +39,7 @@ Prioritized list of improvements identified through codebase analysis.
   source attribution. Adding a small "Reviews from Airbnb" label with the
   Airbnb icon boosts credibility.
 
-* [ ] **UX: Add visible breadcrumb navigation** — JSON-LD breadcrumbs exist
+* [x] **UX: Add visible breadcrumb navigation** — JSON-LD breadcrumbs exist
   but no visible breadcrumb trail appears on listing pages. A simple
   "Home > Property Name" bar above the gallery improves orientation.
 
