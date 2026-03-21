@@ -1,0 +1,17 @@
+{
+  "name": "enastron",
+  "version": "1.0.0",
+  "description": "A static website showcasing 5 vacation rental properties (3 villas, 2 apartments) on Skopelos Island, Sporades, Greece.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:update": "npx playwright test --update-snapshots"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "serve": "^14.2.6"
+  }
+}
