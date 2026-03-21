@@ -23,32 +23,7 @@ Prioritized list of improvements identified through codebase analysis.
 
 ### Medium Priority
 
-* [ ] **Add Open Graph meta tags** — No page has `og:title`, `og:description`,
-  `og:image`, or `og:url` tags. Add them to `index.html` (use the
-  hero/Skopelos image) and each listing page (use that listing's hero image).
-  This fixes blank previews when links are shared on Facebook, iMessage,
-  Slack, etc.
-
-* [ ] **Add Twitter Card meta tags** — No page has `twitter:card`,
-  `twitter:title`, `twitter:description`, or `twitter:image`. Add
-  `summary_large_image` cards to all six pages, reusing the same titles,
-  descriptions, and images chosen for OG tags.
-
-* [ ] **Add canonical URLs** — No page has a `<link rel="canonical">` tag.
-  Add one to each page pointing to its canonical `https://` URL. This
-  prevents search engines from indexing duplicate URLs (e.g., with/without
-  trailing slashes or query strings).
-
-* [ ] **Add a favicon** — No `<link rel="icon">` exists on any page. Create
-  or source a small Enastron brand icon and reference it in every `<head>`.
-  Without a favicon the browser shows a generic blank tab icon and logs a
-  404 for `/favicon.ico`.
-
-* [ ] **Add JSON-LD structured data** — No page has `<script
-  type="application/ld+json">`. Add `VacationRental` (or `LodgingBusiness`)
-  schema to each listing page with name, description, image, address, and
-  geo coordinates. Add an `Organization` schema to `index.html`. This
-  enables rich results in Google Search.
+(empty)
 
 ### Low Priority
 
@@ -58,6 +33,24 @@ Prioritized list of improvements identified through codebase analysis.
   gaps for basic keyboard and screen reader support.
 
 ### Done
+
+* [x] **Add Open Graph meta tags** — Added `og:title`, `og:description`,
+  `og:image`, `og:url`, and `og:type` to `index.html` and all five listing
+  pages.
+
+* [x] **Add Twitter Card meta tags** — Added `summary_large_image` cards with
+  `twitter:card`, `twitter:title`, `twitter:description`, and `twitter:image`
+  to all six pages.
+
+* [x] **Add canonical URLs** — Added `<link rel="canonical">` to `index.html`
+  and all five listing pages.
+
+* [x] **Add a favicon** — Created `images/favicon.svg` (olive-green "E" icon)
+  and referenced it via `<link rel="icon">` on all six pages.
+
+* [x] **Add JSON-LD structured data** — Added `Organization` schema to
+  `index.html` and `LodgingBusiness` schema (with address, geo, image) to
+  all five listing pages.
 
 * [x] **Replace About section placeholder with a real photo** — The "Discover
   Skopelos" section now uses `images/skopelos/island.jpg` instead of the
