@@ -975,42 +975,31 @@ nav[aria-label="Breadcrumb"] + .section {
   line-height: 1.8;
 }
 
-/* --- Amenities --- */
-.amenities {
-  margin-bottom: var(--space-lg);
-}
-
-.amenities h2 {
-  margin-bottom: var(--space-md);
-}
-
-.amenities__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-}
-
-@media (min-width: 768px) {
-  .amenities__grid {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--space-sm);
-  }
-}
-
-.amenity {
+/* --- Amenity Pills (inside listing header) --- */
+.listing-header__amenities {
   display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--border-radius);
-  font-size: var(--fs-body);
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: var(--space-sm);
 }
 
-.amenity svg {
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
+.listing-header__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  font-size: var(--fs-small);
+  padding: 4px 10px;
+  border-radius: 16px;
+  white-space: nowrap;
+}
+
+.listing-header__pill svg {
+  width: 14px;
+  height: 14px;
   color: var(--color-olive);
+  flex-shrink: 0;
 }
 
 /* --- Booking Sidebar --- */

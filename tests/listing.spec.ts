@@ -83,10 +83,10 @@ for (const listing of LISTING_PAGES) {
       await expect(heading).toHaveText(listing.name);
     });
 
-    test("amenities section is visible", async ({ page }) => {
-      const amenities = page.locator(".amenities");
-      await expect(amenities).toBeVisible();
-      const items = amenities.locator(".amenity");
+    test("amenity pills are visible in header", async ({ page }) => {
+      const pills = page.locator(".listing-header__amenities");
+      await expect(pills).toBeVisible();
+      const items = pills.locator(".listing-header__pill");
       expect(await items.count()).toBeGreaterThan(0);
     });
   });
