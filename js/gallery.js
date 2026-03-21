@@ -22,10 +22,96 @@
       scrollTimer = setTimeout(function () {
         var scrollLeft = gallery.scrollLeft;
         var itemWidth = gallery.offsetWidth;
-        var idx = Math.round(scrollLeft / itemWidth) + 1;
-        counterEl.textContent = idx + ' / ' + totalImages;
+        var idx = Math.round(scrollLeft / itemWidth);
+        counterEl.textContent = (idx + 1) + ' / ' + totalImages;
+        // Update dots
+        if (galleryDots.length) {
+          galleryDots.forEach(function (dot, i) {
+            dot.classList.toggle('is-active', i === idx);
+          });
+        }
       }, 50);
     });
+  }
+
+  // --- Mobile Gallery Dots ---
+  var galleryDots = [];
+  var galleryWrap = gallery.closest('.gallery-wrap');
+  if (galleryWrap && totalImages > 1) {
+    var dotsContainer = document.createElement('div');
+    dotsContainer.className = 'gallery-dots';
+    for (var g = 0; g < totalImages; g++) {
+      var gDot = document.createElement('button');
+      gDot.className = 'gallery-dots__dot';
+      gDot.setAttribute('aria-label', 'Go to photo ' + (g + 1));
+      gDot.dataset.index = g;
+      if (g === 0) gDot.classList.add('is-active');
+      dotsContainer.appendChild(gDot);
+    }
+    galleryWrap.appendChild(dotsContainer);
+    galleryDots = dotsContainer.querySelectorAll('.gallery-dots__dot');
+
+    dotsContainer.addEventListener('click', function (e) {
+      var btn = e.target.closest('.gallery-dots__dot');
+      if (!btn) return;
+      var idx = parseInt(btn.dataset.index, 10);
+      gallery.scrollTo({ left: idx * gallery.offsetWidth, behavior: 'smooth' });
+    });
+  }
+
+  // --- Mobile Photo Carousel Auto-Rotate ---
+  if (totalImages > 1) {
+    var photoTimer = null;
+    var photoPaused = false;
+    var photoInterval = 4000;
+
+    function isPhotoAtEnd() {
+      return gallery.scrollLeft + gallery.offsetWidth >= gallery.scrollWidth - 2;
+    }
+
+    function advancePhoto() {
+      if (window.innerWidth > 767) return;
+      if (isPhotoAtEnd()) {
+        gallery.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        gallery.scrollBy({ left: gallery.offsetWidth, behavior: 'smooth' });
+      }
+    }
+
+    function startPhotoCarousel() {
+      if (photoTimer) return;
+      photoTimer = setInterval(advancePhoto, photoInterval);
+    }
+
+    function stopPhotoCarousel() {
+      clearInterval(photoTimer);
+      photoTimer = null;
+    }
+
+    gallery.addEventListener('touchstart', function () {
+      photoPaused = true;
+      stopPhotoCarousel();
+    }, { passive: true });
+
+    gallery.addEventListener('touchend', function () {
+      setTimeout(function () {
+        photoPaused = false;
+        startPhotoCarousel();
+      }, 5000);
+    }, { passive: true });
+
+    if ('IntersectionObserver' in window) {
+      var photoObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !photoPaused) {
+            startPhotoCarousel();
+          } else {
+            stopPhotoCarousel();
+          }
+        });
+      }, { threshold: 0.3 });
+      photoObserver.observe(gallery);
+    }
   }
 
   // --- Lightbox ---

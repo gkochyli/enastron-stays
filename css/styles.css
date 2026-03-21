@@ -651,20 +651,34 @@ p {
   display: none;
 }
 
+/* Gallery dots (mobile only) */
+.gallery-dots {
+  display: none;
+}
+
 @media (max-width: 767px) {
-  .gallery-counter {
-    display: block;
-    position: absolute;
-    bottom: var(--space-sm);
-    right: var(--space-sm);
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    font-size: var(--fs-xs);
-    padding: 0.25rem 0.6rem;
-    border-radius: 999px;
-    pointer-events: none;
-    z-index: 2;
+  .gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: var(--space-xs) 0;
   }
+}
+
+.gallery-dots__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.gallery-dots__dot.is-active {
+  background: #bbb;
+  transform: scale(1.3);
 }
 
 /* Gallery wrapper for positioning counter */
