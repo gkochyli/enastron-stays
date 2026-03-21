@@ -50,7 +50,7 @@ for (const listing of LISTING_PAGES) {
       expect(position).toBe("sticky");
     });
 
-    test("booking sidebar becomes fixed bottom bar on mobile/tablet", async ({
+    test("booking sidebar hidden on mobile/tablet", async ({
       page,
       viewport,
     }) => {
@@ -58,25 +58,7 @@ for (const listing of LISTING_PAGES) {
         test.skip();
       }
       const sidebar = page.locator(".booking-sidebar");
-      await expect(sidebar).toBeVisible();
-
-      const position = await sidebar.evaluate((el) =>
-        getComputedStyle(el).getPropertyValue("position")
-      );
-      expect(position).toBe("fixed");
-    });
-
-    test("booking sidebar rating and note hidden on mobile/tablet", async ({
-      page,
-      viewport,
-    }) => {
-      if (!viewport || viewport.width >= 1024) {
-        test.skip();
-      }
-      const rating = page.locator(".booking-sidebar__rating");
-      const note = page.locator(".booking-sidebar__note");
-      await expect(rating).toBeHidden();
-      await expect(note).toBeHidden();
+      await expect(sidebar).toBeHidden();
     });
 
     test("photo gallery is grid on desktop, carousel on mobile", async ({

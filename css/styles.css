@@ -1014,34 +1014,7 @@ p {
 
 @media (max-width: 1023px) {
   .booking-sidebar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: auto;
-    width: 100%;
-    margin: 0;
-    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-sm) var(--space-md);
-    gap: var(--space-sm);
-    grid-column: unset;
-    grid-row: unset;
-    align-self: unset;
-    justify-self: unset;
-  }
-
-  .booking-sidebar__rating,
-  .booking-sidebar__note {
     display: none;
-  }
-
-  .booking-sidebar .btn {
-    width: auto;
-    margin-bottom: 0;
   }
 }
 
