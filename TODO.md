@@ -23,11 +23,6 @@ Prioritized list of improvements identified through codebase analysis.
 
 ### Medium Priority
 
-* [ ] **Replace About section placeholder with a real photo** — The "Discover
-  Skopelos" section renders a CSS gradient rectangle instead of an actual island
-  photograph. Source or create an appropriate landscape image and swap out the
-  `.about__image-placeholder` element.
-
 * [ ] **Add SEO meta tags, favicon, and structured data** — All pages lack Open
   Graph tags, Twitter Card tags, canonical URLs, a favicon, and JSON-LD
   structured data. Adding these improves social sharing previews and search
@@ -39,3 +34,9 @@ Prioritized list of improvements identified through codebase analysis.
   elements with click handlers but no `role="button"` or `tabindex="0"`. The
   hero carousel lacks pause controls and an `aria-live` region. Address these
   gaps for basic keyboard and screen reader support.
+
+### Done
+
+* [x] **Replace About section placeholder with a real photo** — The "Discover
+  Skopelos" section now uses `images/skopelos/island.jpg` instead of the
+  previous CSS gradient placeholder.
