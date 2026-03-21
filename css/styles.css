@@ -824,12 +824,13 @@ p {
 .amenities__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-sm);
+  gap: 2px;
 }
 
 @media (min-width: 768px) {
   .amenities__grid {
     grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-sm);
   }
 }
 
