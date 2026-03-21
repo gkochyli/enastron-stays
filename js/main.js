@@ -64,6 +64,55 @@
     });
   }
 
+  // --- Listings Grid Mobile Carousel Dots ---
+  document.querySelectorAll('.listings-grid').forEach(function (grid) {
+    var cards = grid.querySelectorAll('.card');
+    if (cards.length < 2) return;
+
+    var dotsWrap = document.createElement('div');
+    dotsWrap.className = 'listings-dots';
+
+    for (var i = 0; i < cards.length; i++) {
+      var dot = document.createElement('button');
+      dot.className = 'listings-dot';
+      dot.setAttribute('aria-label', 'Go to property ' + (i + 1));
+      dot.dataset.index = i;
+      if (i === 0) dot.classList.add('is-active');
+      dotsWrap.appendChild(dot);
+    }
+
+    grid.parentNode.insertBefore(dotsWrap, grid.nextSibling);
+
+    var dots = dotsWrap.querySelectorAll('.listings-dot');
+
+    function getCardWidth() {
+      var card = grid.querySelector('.card');
+      return card ? card.offsetWidth + 24 : 0; // 24 = gap (--space-md)
+    }
+
+    function updateDots() {
+      var cardW = getCardWidth();
+      if (!cardW) return;
+      var active = Math.round(grid.scrollLeft / cardW);
+      dots.forEach(function (d, idx) {
+        d.classList.toggle('is-active', idx === active);
+      });
+    }
+
+    dotsWrap.addEventListener('click', function (e) {
+      var btn = e.target.closest('.listings-dot');
+      if (!btn) return;
+      var idx = parseInt(btn.dataset.index, 10);
+      grid.scrollTo({ left: idx * getCardWidth(), behavior: 'smooth' });
+    });
+
+    var scrollTimeout;
+    grid.addEventListener('scroll', function () {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateDots, 50);
+    }, { passive: true });
+  });
+
   // --- Reviews Carousel Auto-Rotate ---
   var reviewsGrids = document.querySelectorAll('.reviews__grid');
 

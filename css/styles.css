@@ -387,10 +387,59 @@ p {
   gap: var(--space-lg);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .listings-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    gap: var(--space-md);
+    padding-bottom: var(--space-xs);
   }
+
+  .listings-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .listings-grid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .listings-grid > .card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+}
+
+.listings-dots {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .listings-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: var(--space-sm) 0;
+  }
+}
+
+.listings-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.listings-dot.is-active {
+  background: var(--color-terracotta);
+  transform: scale(1.3);
 }
 
 .card {
@@ -1231,6 +1280,13 @@ p {
 .fade-in.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .listings-grid > .fade-in {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* --- Back to top (listing page) --- */
