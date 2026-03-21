@@ -506,6 +506,44 @@ p {
   margin: 0 auto;
 }
 
+/* --- Subsection Header --- */
+.subsection-header {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.subsection-header:first-of-type {
+  margin-top: 0;
+}
+
+.subsection-header h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-xs);
+}
+
+.subsection-header__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 400;
+  color: var(--color-text-light);
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+.subsection-header__location svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.subsection-header p {
+  color: var(--color-text-light);
+  max-width: 600px;
+}
+
 /* --- About Section --- */
 .about {
   display: grid;
