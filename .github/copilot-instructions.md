@@ -133,6 +133,28 @@ Buttons → Nav → Hero → Cards → Section Headers → About → Footer → 
 
 ## Testing Conventions
 
+Tests run automatically on every commit via a Husky pre-commit hook to prevent
+breaking changes. All functional tests must pass before a commit succeeds.
+
+### Test Commands
+
+| Command | Purpose |
+|---|---|
+| `npm test` | Run all tests including screenshot comparisons |
+| `npm run test:update` | Regenerate baseline screenshots after visual changes |
+
+### Pre-commit Hook
+
+A Husky pre-commit hook runs functional tests (excluding screenshot comparisons)
+on every commit. This ensures no commit introduces broken HTML structure,
+missing elements, or responsive layout regressions.
+
+- Hook location: `.husky/pre-commit`
+- Runs: `npx playwright test --grep-invert "full page screenshot"`
+- Screenshot tests are skipped because visual changes are intentional and
+  baselines must be updated explicitly with `npm run test:update`
+- **Do not bypass**: avoid `--no-verify` on commits
+
 ### Playwright Setup
 
 - 3 viewport projects matching CSS breakpoints: desktop, tablet, mobile
@@ -145,11 +167,28 @@ Buttons → Nav → Hero → Cards → Section Headers → About → Footer → 
 - Animation disabling via injected `<style>` (`animation-duration: 0s !important`)
 - Full-page screenshots with 1% tolerance (`maxDiffPixelRatio: 0.01`)
 - Listing tests parameterized: loop over all 5 properties
-- Screenshot tests skipped in CI (`--grep-invert "full page screenshot"`)
+- Screenshot tests skipped in CI and pre-commit (`--grep-invert "full page screenshot"`)
 
-### After Making Visual Changes
+### After Making Changes
 
-Run `npm run test:update` to regenerate baseline screenshots, then `npm test` to verify.
+1. Run `npm test` to verify all tests pass (functional + screenshots)
+2. If visual changes were intentional, run `npm run test:update` to regenerate baselines
+3. Run `npm test` again to confirm updated baselines pass
+4. Commit — the pre-commit hook runs functional tests automatically
+
+### What Tests Cover
+
+| Test File | Scope | Key Assertions |
+|---|---|---|
+| `homepage.spec.ts` | Homepage | Hero visible, 3 cottage + 2 apartment cards, nav responsive, card stats, footer |
+| `listing.spec.ts` | All 5 listings | Sidebar visibility by viewport, gallery grid/flex layout, heading text, amenities |
+
+### Adding New Tests
+
+- Place new test files in `tests/` with `.spec.ts` extension
+- Follow the `beforeEach` pattern: navigate, wait for dynamic content, disable animations
+- Use parameterized loops for tests that apply to all listings
+- Name screenshot tests with "full page screenshot" so they are skipped in CI/pre-commit
 
 ## Commit Messages
 
