@@ -26,7 +26,7 @@ Prioritized list of improvements identified through codebase analysis.
 
 ### Medium Priority
 
-* [ ] **UX: Differentiate cottages vs. apartments** — The three rural
+* [x] **UX: Differentiate cottages vs. apartments** — The three rural
   cottages (€185–205, private pools) and two town apartments (€50–65) serve
   different audiences. Group them into two sections or add a filter/tab toggle
   so visitors can quickly find what fits.
