@@ -13,12 +13,9 @@
   --color-text: #2E3640;
   --color-text-light: #5A6370;
   --color-olive: #757159;
-  --color-olive-light: #918D74;
   --color-olive-dark: #4A4838;
   --color-terracotta: #A67B5B;
   --color-terracotta-light: #C09A7A;
-  --color-sea: #5E8999;
-  --color-sea-light: #7DA8B5;
   --color-white: #FFFFFF;
   --color-border: #D5D2C3;
 
@@ -355,8 +352,8 @@ p {
   background: linear-gradient(
     135deg,
     rgba(46, 54, 64, 0.55) 0%,
-    rgba(94, 137, 153, 0.4) 50%,
-    rgba(117, 113, 89, 0.45) 100%
+    rgba(117, 113, 89, 0.4) 50%,
+    rgba(74, 72, 56, 0.45) 100%
   );
   z-index: 1;
 }
@@ -420,7 +417,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: linear-gradient(135deg, var(--color-sea-light) 0%, var(--color-olive-light) 100%);
+  background: linear-gradient(135deg, var(--color-terracotta-light) 0%, var(--color-olive) 100%);
 }
 
 .card__badge {
@@ -522,7 +519,7 @@ p {
   aspect-ratio: 4 / 3;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
-  background: linear-gradient(160deg, var(--color-olive-light) 0%, var(--color-sea) 100%);
+  background: linear-gradient(160deg, var(--color-olive) 0%, var(--color-terracotta) 100%);
 }
 
 .about__image img {
@@ -685,7 +682,7 @@ p {
 }
 
 .gallery-dots__dot.is-active {
-  background: #bbb;
+  background: var(--color-text-light);
   transform: scale(1.3);
 }
 
