@@ -10,7 +10,7 @@ Prioritized list of improvements identified through codebase analysis.
 
 ### High Priority
 
-* [ ] **UX: Remove hero image blur** — The hero carousel applies
+* [x] **UX: Remove hero image blur** — The hero carousel applies
   `filter: blur(2px)` to every slide. For a vacation rental site, sharp
   aspirational photography is the biggest conversion driver. Remove the blur
   and let the images sell the properties.
