@@ -978,8 +978,6 @@ nav[aria-label="Breadcrumb"] + .section {
 /* --- Amenities --- */
 .amenities {
   margin-bottom: var(--space-lg);
-  padding-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--color-border);
 }
 
 .amenities h2 {
@@ -1078,7 +1076,7 @@ nav[aria-label="Breadcrumb"] + .section {
 }
 
 .reviews h2 {
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-md);
 }
 
 .reviews__summary {
