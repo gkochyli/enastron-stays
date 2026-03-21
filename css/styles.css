@@ -1012,10 +1012,11 @@ p {
 }
 
 .review-card__stars {
-  display: flex;
+  display: inline-flex;
   gap: 2px;
-  margin-bottom: var(--space-xs);
   color: var(--color-terracotta);
+  vertical-align: middle;
+  margin-left: var(--space-xs);
 }
 
 .review-card__stars svg {
@@ -1034,6 +1035,13 @@ p {
     font-size: var(--fs-small);
     line-height: 1.6;
   }
+}
+
+.review-card__listing {
+  margin-top: var(--space-sm);
+  font-size: var(--fs-small);
+  font-style: italic;
+  color: var(--color-text-light);
 }
 
 /* --- CTA Section --- */
