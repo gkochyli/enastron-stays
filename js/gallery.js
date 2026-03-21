@@ -167,14 +167,27 @@
     updateLightboxImage();
   }
 
-  // Gallery item click
+  // Gallery item click and keyboard activation
   galleryItems.forEach(function (item) {
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+
     item.addEventListener('click', function (e) {
       // Don't open lightbox if "show all" button was clicked
       if (e.target.closest('.gallery__show-all')) return;
       var index = parseInt(item.getAttribute('data-index'), 10);
       if (!isNaN(index)) {
         openLightbox(index);
+      }
+    });
+
+    item.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        var index = parseInt(item.getAttribute('data-index'), 10);
+        if (!isNaN(index)) {
+          openLightbox(index);
+        }
       }
     });
   });
