@@ -127,12 +127,12 @@
 
   var currentIndex = 0;
 
-  // Collect gradient backgrounds from gallery items for the lightbox
-  var gradients = [];
+  // Collect image sources from gallery items for the lightbox
+  var imageSrcs = [];
   galleryItems.forEach(function (item) {
-    var placeholder = item.querySelector('.gallery__item-placeholder');
-    if (placeholder) {
-      gradients.push(placeholder.style.background || placeholder.style.backgroundImage);
+    var img = item.querySelector('img');
+    if (img) {
+      imageSrcs.push(img.src);
     }
   });
 
@@ -150,8 +150,9 @@
   }
 
   function updateLightboxImage() {
-    if (gradients[currentIndex]) {
-      lightboxImage.style.background = gradients[currentIndex];
+    if (imageSrcs[currentIndex]) {
+      lightboxImage.src = imageSrcs[currentIndex];
+      lightboxImage.alt = 'Photo ' + (currentIndex + 1) + ' of ' + totalImages;
     }
     lightboxCounter.textContent = (currentIndex + 1) + ' / ' + totalImages;
   }
