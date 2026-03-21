@@ -10,16 +10,7 @@ Prioritized list of improvements identified through codebase analysis.
 
 ### High Priority
 
-* [ ] **Fix lightbox on listing pages** — `gallery.js` targets `#lightbox`,
-  `#lightboxImage`, and related elements that don't exist in any listing page
-  markup. The "Show all photos" button silently fails on all five listings.
-  Add the missing lightbox HTML and fix `updateLightboxImage()` so it sets a
-  real image `src` instead of CSS gradients.
-
-* [ ] **Add lazy loading to below-fold images** — All ten images on the landing
-  page (five hero carousel slides plus five property card images) load eagerly.
-  Only one hero slide is visible at a time; the remaining four slides and all
-  card images should use `loading="lazy"` for a straightforward performance win.
+(empty)
 
 ### Medium Priority
 
@@ -27,12 +18,23 @@ Prioritized list of improvements identified through codebase analysis.
 
 ### Low Priority
 
-* [ ] **Improve gallery keyboard accessibility** — Gallery items are `<div>`
-  elements with click handlers but no `role="button"` or `tabindex="0"`. The
-  hero carousel lacks pause controls and an `aria-live` region. Address these
-  gaps for basic keyboard and screen reader support.
+(empty)
 
 ### Done
+
+* [x] **Fix lightbox on listing pages** — Added lightbox HTML markup to all
+  five listing pages and fixed `gallery.js` to use real `<img>` `src` values
+  instead of CSS gradients. The "Show all photos" button and gallery clicks
+  now open a working lightbox.
+
+* [x] **Add lazy loading to below-fold images** — Added `loading="lazy"` to
+  the four inactive hero carousel slides and all five property card images
+  on `index.html`.
+
+* [x] **Improve gallery keyboard accessibility** — Gallery items now have
+  `role="button"` and `tabindex="0"` (set via JS). Enter and Space keys
+  activate the lightbox. Hero carousel has `aria-live="polite"`,
+  `aria-roledescription="carousel"`, and an `aria-label`.
 
 * [x] **Add Open Graph meta tags** — Added `og:title`, `og:description`,
   `og:image`, `og:url`, and `og:type` to `index.html` and all five listing
