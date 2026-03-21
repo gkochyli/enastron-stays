@@ -968,6 +968,30 @@ p {
   gap: var(--space-lg);
 }
 
+@media (max-width: 767px) {
+  .reviews__grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    gap: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .reviews__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .review-card {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    padding-right: var(--space-lg);
+    border-bottom: none;
+  }
+}
+
 @media (min-width: 768px) {
   .reviews__grid {
     grid-template-columns: 1fr 1fr;
@@ -987,18 +1011,7 @@ p {
 }
 
 .review-card__avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: var(--color-bg-alt);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  color: var(--color-olive);
-  font-size: 1.125rem;
-  flex-shrink: 0;
+  display: none;
 }
 
 .review-card__name {
@@ -1026,6 +1039,13 @@ p {
   color: var(--color-text-light);
   font-size: var(--fs-body);
   line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+  .review-card__text {
+    font-size: var(--fs-small);
+    line-height: 1.6;
+  }
 }
 
 /* --- CTA Section --- */
