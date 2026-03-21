@@ -124,3 +124,8 @@ Prioritized list of improvements identified through codebase analysis.
 * [x] **Replace About section placeholder with a real photo** — The "Discover
   Skopelos" section now uses `images/skopelos/island.jpg` instead of the
   previous CSS gradient placeholder.
+
+* [x] **UX: Move reviews above Discover Skopelos** — Swapped the Guest
+  Reviews and About the Island sections so social proof follows immediately
+  after property cards. Moved the `section--alt` backdrop to Reviews for
+  visual separation.
