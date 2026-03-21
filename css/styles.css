@@ -449,13 +449,19 @@ p {
   gap: 0.35rem;
   color: var(--color-text-light);
   font-size: var(--fs-small);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .card__location svg {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
+}
+
+.card__stats {
+  color: var(--color-text-light);
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-sm);
 }
 
 .card__footer {

@@ -19,7 +19,7 @@ Prioritized list of improvements identified through codebase analysis.
   ratings (4.9–5.0) but they are invisible until a visitor clicks into a
   listing. Showing stars on each card provides immediate social proof.
 
-* [ ] **UX: Add guest/bed/bath stats to property cards** — Guest count,
+* [x] **UX: Add guest/bed/bath stats to property cards** — Guest count,
   bedrooms, and bathrooms are primary decision factors. A compact stat line
   like "4 guests · 1 bed · 1 bath" under each card lets visitors
   self-qualify without clicking in.
