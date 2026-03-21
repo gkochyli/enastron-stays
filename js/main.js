@@ -63,4 +63,118 @@
       el.classList.add('is-visible');
     });
   }
+
+  // --- Reviews Carousel Auto-Rotate ---
+  var reviewsGrids = document.querySelectorAll('.reviews__grid');
+
+  reviewsGrids.forEach(function (grid) {
+    var interval = 4000;
+    var timer = null;
+    var paused = false;
+
+    // --- Build dots indicator ---
+    var cards = grid.querySelectorAll('.review-card');
+    var dotsWrap = document.createElement('div');
+    dotsWrap.className = 'reviews__dots';
+    for (var d = 0; d < cards.length; d++) {
+      var dot = document.createElement('button');
+      dot.className = 'reviews__dot';
+      dot.setAttribute('aria-label', 'Go to review ' + (d + 1));
+      dot.dataset.index = d;
+      if (d === 0) dot.classList.add('is-active');
+      dotsWrap.appendChild(dot);
+    }
+    grid.parentNode.insertBefore(dotsWrap, grid.nextSibling);
+
+    var dots = dotsWrap.querySelectorAll('.reviews__dot');
+
+    function updateDots() {
+      var cardW = getCardWidth();
+      if (!cardW) return;
+      var active = Math.round(grid.scrollLeft / cardW);
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('is-active', i === active);
+      });
+    }
+
+    // Click a dot to jump
+    dotsWrap.addEventListener('click', function (e) {
+      var btn = e.target.closest('.reviews__dot');
+      if (!btn) return;
+      var idx = parseInt(btn.dataset.index, 10);
+      grid.scrollTo({ left: idx * getCardWidth(), behavior: 'smooth' });
+    });
+
+    // Update dots on scroll
+    var scrollTimeout;
+    grid.addEventListener('scroll', function () {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateDots, 50);
+    }, { passive: true });
+
+    function getCardWidth() {
+      var card = grid.querySelector('.review-card');
+      return card ? card.offsetWidth : 0;
+    }
+
+    function isAtEnd() {
+      return grid.scrollLeft + grid.offsetWidth >= grid.scrollWidth - 2;
+    }
+
+    function advance() {
+      if (isAtEnd()) {
+        grid.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        grid.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+      }
+    }
+
+    function start() {
+      if (timer) return;
+      timer = setInterval(advance, interval);
+    }
+
+    function stop() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    // Pause on touch, resume after 5s
+    grid.addEventListener('touchstart', function () {
+      paused = true;
+      stop();
+    }, { passive: true });
+
+    grid.addEventListener('touchend', function () {
+      setTimeout(function () {
+        paused = false;
+        start();
+      }, 5000);
+    }, { passive: true });
+
+    // Pause on mouse hover, resume on leave
+    grid.addEventListener('mouseenter', function () {
+      paused = true;
+      stop();
+    });
+
+    grid.addEventListener('mouseleave', function () {
+      paused = false;
+      start();
+    });
+
+    // Start when grid scrolls into view
+    if ('IntersectionObserver' in window) {
+      var gridObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !paused) {
+            start();
+          } else {
+            stop();
+          }
+        });
+      }, { threshold: 0.3 });
+      gridObserver.observe(grid);
+    }
+  });
 })();
