@@ -1,38 +1,45 @@
 # Enastron — Skopelos Vacation Rentals
 
-A static website showcasing 5 vacation rental properties (3 villas, 2 apartments) on Skopelos Island, Sporades, Greece.
+A static website showcasing 5 vacation rental properties (3 cottages, 2 apartments) on Skopelos Island, Sporades, Greece.
 
 ## Design
 
 - **Style**: Mediterranean minimalist
-- **Colors**: White/cream, olive green, terracotta, sea blue
+- **Colors**: Cream, olive green, terracotta
 - **Typography**: Playfair Display (headings) + Lato (body) via Google Fonts
 - **Responsive**: Mobile-first, works across all screen sizes
 
 ## Structure
 
 ```text
-├── index.html                          # Homepage (hero + property grid)
-├── css/styles.css                      # All styles (design system + components)
-├── js/main.js                          # Mobile nav, scroll animations
-├── js/gallery.js                       # Photo gallery lightbox
-└── listings/
-    ├── panormos-bay-villa.html         # Villa — Panormos Bay
-    ├── kastani-sunset-villa.html       # Villa — Kastani
-    ├── chora-olive-grove-villa.html    # Villa — Skopelos Town
-    ├── glossa-view-apartment.html      # Apartment — Glossa
-    └── staphylos-beach-apartment.html  # Apartment — Staphylos
+index.html                              # Homepage (hero + property grid)
+css/styles.css                          # All styles (design system + components)
+js/main.js                              # Mobile nav, hero carousel, fade-in, dots
+js/gallery.js                           # Photo gallery, lightbox, mobile carousel
+js/prices.js                            # Centralized pricing data + DOM injection
+js/reviews.js                           # Centralized reviews data + DOM injection
+listings/
+  mulberry-tree-cottage.html            # Cottage — Mulberry Tree
+  daphne-cottage.html                   # Cottage — Daphne
+  chestnut-tree-cottage.html            # Cottage — Chestnut Tree
+  enastron-guesthouse.html              # Apartment — Enastron Guesthouse
+  enastron-guest-room.html              # Apartment — Enastron Guest Room
+images/{property-slug}/                 # hero.jpg + photo-1..4.jpg per property
+images/skopelos/                        # Island-wide imagery
+tests/
+  homepage.spec.ts                      # Homepage Playwright tests
+  listing.spec.ts                       # Listing page tests (all 5 properties)
+playwright.config.ts                    # 3 viewport projects + dev server
+.github/workflows/playwright.yml        # CI workflow
 ```
 
-## Local Preview
-
-Open `index.html` in a browser, or serve locally:
+## Local Development
 
 ```bash
-# Python 3
-python3 -m http.server 8000
-
-# Then visit http://localhost:8000
+npm install          # Install Playwright + Husky
+npx serve -p 3000    # Dev server
+npm test             # Run all tests including screenshot comparisons
+npm run test:update  # Regenerate baseline screenshots after visual changes
 ```
 
 ## GitHub Pages Deployment
@@ -46,19 +53,17 @@ The `.nojekyll` file is included to prevent Jekyll processing.
 
 ## Customization
 
-### Replacing Placeholder Content
-
-- **Photos**: Replace the gradient `div` placeholders with `<img>` tags in each HTML file. Place images in the `images/` folder.
-- **Descriptions**: Edit the text in the `<div class="description">` section of each listing page.
-- **Prices & Reviews**: Update directly in the HTML.
-- **Airbnb URLs**: Replace `https://www.airbnb.com/` in "Book on Airbnb" links with actual listing URLs.
-
 ### Color Palette
 
 Edit CSS custom properties in `css/styles.css` under `:root` to adjust the color scheme.
 
+### Pricing & Reviews
+
+Update the `PRICES` object in `js/prices.js` and `ENASTRON_REVIEWS` object in `js/reviews.js`.
+
 ## Tech Stack
 
-- Pure HTML5, CSS3, JavaScript (ES6)
+- Pure HTML5, CSS3, vanilla JavaScript (ES5-compatible IIFEs)
 - No frameworks or build tools
 - Google Fonts (CDN)
+- Playwright for testing
