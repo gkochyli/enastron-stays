@@ -163,7 +163,7 @@ var ENASTRON_REVIEWS = {
   // Listing names for the landing page
   var LISTING_NAMES = {
     'mulberry': 'Mulberry Tree Cottage',
-    'daphne': 'Daphne Cottage',
+    'daphne': 'Daphne Tree Cottage',
     'chestnut': 'Chestnut Tree Cottage',
     'enastron-guesthouse': 'Enastron Guesthouse',
     'enastron-guest-room': 'Enastron Guest Room'

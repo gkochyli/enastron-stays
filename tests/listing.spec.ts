@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 const LISTING_PAGES = [
   { path: "/listings/mulberry-tree-cottage.html", name: "Mulberry Tree Cottage" },
-  { path: "/listings/daphne-cottage.html", name: "Daphne Cottage" },
+  { path: "/listings/daphne-tree-cottage.html", name: "Daphne Tree Cottage" },
   { path: "/listings/chestnut-tree-cottage.html", name: "Chestnut Tree Cottage" },
   { path: "/listings/enastron-guesthouse.html", name: "Enastron Guesthouse" },
   { path: "/listings/enastron-guest-room.html", name: "Enastron Guest Room" },
