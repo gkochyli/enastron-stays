@@ -20,7 +20,7 @@ js/prices.js                            # Centralized pricing data + DOM injecti
 js/reviews.js                           # Centralized reviews data + DOM injection
 listings/
   mulberry-tree-cottage.html            # Cottage — Mulberry Tree
-  daphne-cottage.html                   # Cottage — Daphne
+  daphne-tree-cottage.html              # Cottage — Daphne Tree
   chestnut-tree-cottage.html            # Cottage — Chestnut Tree
   enastron-guesthouse.html              # Apartment — Enastron Guesthouse
   enastron-guest-room.html              # Apartment — Enastron Guest Room
